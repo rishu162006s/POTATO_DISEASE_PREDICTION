@@ -184,13 +184,13 @@ export const ImageUpload = () => {
     setPreview(objectUrl);
   }, [selectedFile]);
 
-  useEffect(() => {
-    if (!preview) {
-      return;
-    }
-    setIsloading(true);
-    sendFile();
-  }, [preview]);
+ useEffect(() => {
+  if (!preview) {
+    return;
+  }
+  setIsloading(true);
+  sendFile();
+}, [preview, sendFile]);
 
   const onSelectFile = (files) => {
     if (!files || files.length === 0) {
