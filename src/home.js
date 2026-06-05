@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,7 +13,6 @@ import { DropzoneArea } from 'material-ui-dropzone';
 import { common } from '@material-ui/core/colors';
 import Clear from '@material-ui/icons/Clear';
 import React, { useState, useEffect, useCallback } from "react";
-
 
 
 const ColorButton = withStyles((theme) => ({
