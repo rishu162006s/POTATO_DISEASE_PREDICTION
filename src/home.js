@@ -174,19 +174,13 @@ const sendFile = useCallback(async () => {
       }
     } catch (err) {
       console.log("Error:", err);
+    } finally {
+      setIsloading(false);
     }
-
-    setIsloading(false);
   };
 }, [selectedFile]);
 
-    if (res.status === 200) {
-      setData(res.data);
-    }
-
-    setIsloading(false);
-  }
-}, [image, selectedFile]);
+   
 
   const clearData = () => {
     setData(null);
