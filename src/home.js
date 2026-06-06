@@ -118,7 +118,7 @@ export const ImageUpload = () => {
       });
 
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/predict`,
+        `${process.env.REACT_APP_API_URL}`,
         {
           image_base64: base64,
         }
