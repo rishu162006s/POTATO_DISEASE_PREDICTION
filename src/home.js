@@ -233,7 +233,7 @@ export const ImageUpload = () => {
                       </TableHead>
                       <TableBody>
                         <TableRow>
-                          <TableCell>{data.class}</TableCell>
+                          <TableCell>{data.class_}</TableCell>
                           <TableCell align="right">
                             {confidence}%
                           </TableCell>
