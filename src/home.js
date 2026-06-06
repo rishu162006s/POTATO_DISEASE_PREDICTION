@@ -149,16 +149,36 @@ export const ImageUpload = () => {
   const [isLoading, setIsloading] = useState(false);
   let confidence = 0;
 
- const sendFile = useCallback(async () => {
-  if (image) {
-    let formData = new FormData();
-    formData.append("file", selectedFile);
+const sendFile = useCallback(async () => {
+  if (!selectedFile) return;
 
-    let res = await axios({
-      method: "post",
-      url: process.env.REACT_APP_API_URL,
-      data: formData,
-    });
+  const reader = new FileReader();
+
+  reader.readAsDataURL(selectedFile);
+
+  reader.onloadend = async () => {
+    const base64String = reader.result.split(",")[1];
+
+    try {
+      setIsloading(true);
+
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/predict`,
+        {
+          image_base64: base64String,
+        }
+      );
+
+      if (res.status === 200) {
+        setData(res.data);
+      }
+    } catch (err) {
+      console.log("Error:", err);
+    }
+
+    setIsloading(false);
+  };
+}, [selectedFile]);
 
     if (res.status === 200) {
       setData(res.data);
